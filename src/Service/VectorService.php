@@ -17,7 +17,7 @@ class VectorService {
   /**
    *
    */
-  public function scale(Vector $Vector, float $scalar) {
+  public function scale(Vector $Vector, $scalar) {
     $elements = explode(",", $Vector->elements->value);
     foreach( $elements as &$element) {
       trim($element);

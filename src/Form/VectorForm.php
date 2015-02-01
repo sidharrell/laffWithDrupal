@@ -69,7 +69,7 @@ class VectorForm extends ContentEntityForm {
     $form_state->setRedirect('entity.laff_vector.collection');
     $entity = $this->getEntity();
     if(!empty($form['scalar']['#value'])) {
-      $this->vectorService->scale($entity, $form['scalar']['#value']);
+      $this->vectorService->scale($entity, (float)$form['scalar']['#value']);
     }
     $entity->save();
   }
