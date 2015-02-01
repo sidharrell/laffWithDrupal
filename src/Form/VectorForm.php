@@ -10,6 +10,7 @@ namespace Drupal\laff\Form;
 use Drupal\Core\Entity\ContentEntityForm;
 use Drupal\Core\Language\Language;
 use Drupal\Core\Form\FormStateInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
 *  Form controller for the vector entity edit forms.
@@ -17,6 +18,27 @@ use Drupal\Core\Form\FormStateInterface;
 *  @ingroup laff
 */
 class VectorForm extends ContentEntityForm {
+
+  /**
+   * @var
+   */
+  protected $vectorService;
+
+  /**
+   * Class Constructor.
+   */
+  public function __construct($vectorService) {
+    $this->vectorService = $vectorService;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('laff.vector_service')
+    );
+  }
 
   /**
    * {@inheritdoc}
@@ -32,6 +54,11 @@ class VectorForm extends ContentEntityForm {
       '#default_value' => $entity->getUntranslated()->language()->getId(),
       '#languages' => Language::STATE_ALL,
     );
+    $form['scalar'] = array(
+      '#type' => 'textfield',
+      '#title' => $this->t('Scale the vector.'),
+      '#default_value' => '',
+    );
     return $form;
   }
 
@@ -41,6 +68,9 @@ class VectorForm extends ContentEntityForm {
   public function save(array $form, FormStateInterface $form_state) {
     $form_state->setRedirect('entity.laff_vector.collection');
     $entity = $this->getEntity();
+    if(!empty($form['scalar']['#value'])) {
+      $this->vectorService->scale($entity, $form['scalar']['#value']);
+    }
     $entity->save();
   }
 }

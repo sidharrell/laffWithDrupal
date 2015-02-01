@@ -1,0 +1,4 @@
+services:
+  laff.vector_service:
+    class: Drupal\laff\Service\VectorService
+
