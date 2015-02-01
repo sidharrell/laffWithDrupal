@@ -1,0 +1,23 @@
+# Define the 'local' links for the module
+
+vector.settings_tab:
+  route_name: laff.vector_settings
+  title: Settings
+  base_route: laff.vector_settings
+
+vector_view:
+  route_name: entity.laff_vector.canonical
+  base_route: entity.laff_vector.canonical
+  title: View
+
+vector.page_edit:
+  route_name: entity.laff_vector.edit_form
+  base_route: entity.laff_vector.canonical
+  title: Edit
+
+vector.delete_confirm:
+  route_name: entity.laff_vector.delete_form
+  base_route: entity.laff_vector.canonical
+  title: Delete
+  weight: 10
+

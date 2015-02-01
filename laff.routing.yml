@@ -1,0 +1,55 @@
+# Route name can be used in sevaral place (links, redirects, local actions etc.)
+entity.laff_vector.canonical:
+  path: '/laff/{laff_vector}'
+  defaults:
+  # Calls the view controller, defined in the annotation of the vector entity
+    _entity_view: 'laff_vector'
+    _title: 'Vector Content'
+  requirements:
+  # Calls the access controller of the entity, $operation 'view'
+    _entity_access: 'laff_vector.view'
+
+entity.laff_vector.collection:
+  path: '/laff/list'
+  defaults:
+  # Calls the list controller, defined in the annotation of the vector entity.
+    _entity_list: 'laff_vector'
+    _title: 'Vector List'
+  requirements:
+  # Checks for permission directly.
+    _permission: 'view vector entity'
+
+laff.vector_add:
+  path: '/laff/add'
+  defaults:
+  # Calls the form.add controller, defined in the vector entity.
+    _entity_form: laff_vector.add
+    _title: 'Add Vector'
+  requirements:
+    _entity_create_access: 'laff_vector'
+
+entity.laff_vector.edit_form:
+  path: '/laff/{laff_vector}/edit'
+  defaults:
+  # Calls the form.edit controller, defined in the vector entity.
+    _entity_form: laff_vector.edit
+    _title: 'Edit Vector'
+  requirements:
+    _entity_access: 'laff_vector.edit'
+
+entity.laff_vector.delete_form:
+  path: '/vector/{laff_vector}/delete'
+  defaults:
+    # Calls the form.delete controller, defined in the vector entity.
+    _entity_form: laff_vector.delete
+    _title: 'Delete Vector'
+  requirements:
+    _entity_access: 'laff_vector.delete'
+
+laff.vector_settings:
+  path: 'admin/structure/laff_vector_settings'
+  defaults:
+    _form: '\Drupal\laff\Form\VectorSettingsForm'
+    _title: 'Vector Settings'
+  requirements:
+    _permission: 'administer vector entity'

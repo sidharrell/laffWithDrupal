@@ -1,0 +1,10 @@
+# All action links for this module
+
+laff.vector_add:
+  route_name: laff.vector_add
+  title: 'Add Vector'
+
+  appears_on:
+    - entity.laff_vector.collection
+    - entity.laff_vector.canonical
+

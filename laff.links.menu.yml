@@ -1,0 +1,12 @@
+# Define the menu links for this module
+
+entity.laff_vector.collection:
+  title: 'laff: Vectors Listing'
+  route_name: entity.laff_vector.collection
+  description: 'List Vectors'
+  weight: 10
+laff.admin.structure.settings:
+  title: Vector Settings
+  description: 'Configure Vector entity'
+  route_name:  laff.vector_settings
+  parent: system.admin_structure

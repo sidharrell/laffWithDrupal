@@ -1,0 +1,9 @@
+name: laff
+type: module
+description: 'Linear Algebra Foundations to Frontiers. Provides Vector entity.'
+package: laff
+core: 8.x
+# These modules are required by the tests, must be available at bootstrap time
+dependencies:
+  - options
+  - entity_reference
